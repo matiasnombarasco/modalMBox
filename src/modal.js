@@ -24,7 +24,8 @@
             $('.modal_box').css({
                 'left':options.left,
                 'top':options.top,
-                'height': options.height + 'px',
+                'height': 'auto',
+                'max-height' : (window.innerHeight - 100) + 'px',
                 'width': options.width + 'px'
             });
 
@@ -36,10 +37,7 @@
                 'height':pageHeight,
                 'width':pageWidth
             });
-            $('.inner_modal_box').css({
-                'height':(options.height - 50) + 'px',
-                'width':(options.width - 50) + 'px'
-            });
+
         }
 
         function add_block_page(){
@@ -49,7 +47,7 @@
         }
 
         function add_popup_box(){
-            var pop_up = $('<div class="modal_box"><a href="#" class="modal_close"></a><div class="inner_modal_box"> + options.content + '</div></div>');
+            var pop_up = $('<div class="modal_box"><a href="#" class="modal_close"></a><div class="inner_modal_box">' + options.content + '</div></div>');
             $(pop_up).appendTo('.block_page');
 
             $('.modal_close').click(function(){

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="src/modal.js" type="text/javascript"></script>
+    <link href="src/modal.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(
+            function() {
+                $("#demo").modal_box({
+                            content: $(".modal-content").html()
+                        }
+
+                );
+            }
+        );
+
+    </script>
+    <title>Demo modal page</title>
+</head>
+<body>
+
+
+This a demo, <a href="#" id="demo">click here</a> to see what happen...
+
+<div class="modal-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+<div style="height: 300px; border: 1px solid red;width: 150px;"> </div>
+</div>
+</body>
+</html>
