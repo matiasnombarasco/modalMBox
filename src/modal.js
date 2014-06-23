@@ -31,7 +31,7 @@
 
             if(options.top.indexOf("%")) {
                 options.top = options.top.replace("%","");
-                options.topOffset = window.scrollY + (window.innerHeight * (options.top/100));
+                options.topOffset = $(window).scrollTop() + ($( window ).height() * (options.top/100));
 
             } else {
                 //I will assume that we got a simple value without the px suffix on it
