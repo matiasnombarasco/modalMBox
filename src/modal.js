@@ -9,7 +9,8 @@
             width : "500",
             content: "Example of how to create a modal box.",
             top: "20%",
-            left: "30%"
+            left: "30%",
+            leftOffset: 0
         },prop);
 
         return this.click(function(e){
@@ -18,12 +19,29 @@
             set_styles();
 
             $('.modal_box').fadeIn();
+            return false;
         });
 
         function set_styles(){
+
+            if(options.left == "centered") {
+                options.left = '50%';
+                options.leftOffset = '-' + (options.width/2) + 'px';
+            }
+
+            if(options.top.indexOf("%")) {
+                options.top = options.top.replace("%","");
+                options.topOffset = window.scrollY + (window.innerHeight * (options.top/100));
+
+            } else {
+                //I will assume that we got a simple value without the px suffix on it
+                options.topOffset = window.scrollY + options.top;
+            }
+
             $('.modal_box').css({
-                'left':options.left,
-                'top':options.top,
+                'left': '50%',
+                'margin-left': options.leftOffset,
+                'top': options.topOffset + 'px',
                 'height': 'auto',
                 'max-height' : (window.innerHeight - 100) + 'px',
                 'width': options.width + 'px'
@@ -53,10 +71,11 @@
             $('.modal_close').click(function(){
                 $(this).parent().fadeOut().remove();
                 $('.block_page').fadeOut().remove();
+                return false;
             });
         }
 
         return this;
     };
 
-})(jQuery);
+})($);
