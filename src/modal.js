@@ -2,7 +2,7 @@
 
     $.fn.modal_box = function(prop){
 
-        // Default parameters
+        // Default parameters - Im not proud for this, I promess that i will refator when i had a chance
 
         var options = $.extend({
             height : "250",
@@ -10,10 +10,19 @@
             content: "Example of how to create a modal box.",
             top: "20%",
             left: "30%",
-            leftOffset: 0
+            leftOffset: 0, 
+            noClick: false /*it will just initialite the modal without wait for a click*/
         },prop);
 
-        return this.click(function(e){
+
+        if(noClick) {
+            add_block_page();
+            add_popup_box();
+            set_styles();
+            $('.modal_box').fadeIn();
+            return false;
+        } else {
+            return this.click(function(e){
             add_block_page();
             add_popup_box();
             set_styles();
@@ -22,6 +31,9 @@
             return false;
         });
 
+        
+        }
+       
         function set_styles(){
 
             if(options.left == "centered") {
