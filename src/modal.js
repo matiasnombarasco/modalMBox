@@ -15,7 +15,7 @@
         },prop);
 
 
-        if(noClick) {
+        if(options.noClick) {
             add_block_page();
             add_popup_box();
             set_styles();
