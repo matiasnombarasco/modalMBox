@@ -2,7 +2,7 @@
   "name": "modalmbox",
   "description": "Simple and lightweight modal window plugi",
   "main": "dist/modalmbox.js",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "dependencies": {}
 }
 
