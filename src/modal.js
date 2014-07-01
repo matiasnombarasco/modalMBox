@@ -23,15 +23,13 @@
             return false;
         } else {
             return this.click(function(e){
-            add_block_page();
-            add_popup_box();
-            set_styles();
-
-            $('.modal_box').fadeIn();
-            return false;
-        });
-
-        
+                add_block_page();
+                add_popup_box();
+                set_styles();
+    
+                $('.modal_box').fadeIn();
+                return false;
+            });
         }
        
         function set_styles(){
