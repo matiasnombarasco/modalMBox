@@ -11,7 +11,9 @@
             top: "20%",
             left: "30%",
             leftOffset: 0, 
-            noClick: false /*it will just initialite the modal without wait for a click*/
+            noClick: false, /*it will just initialite the modal without wait for a click*/
+            onShow: function() {}
+
         },prop);
 
 
@@ -20,6 +22,7 @@
             add_popup_box();
             set_styles();
             $('.modal_box').fadeIn();
+            options.onShow.call(this);
             return false;
         } else {
             return this.click(function(e){
@@ -28,6 +31,7 @@
                 set_styles();
     
                 $('.modal_box').fadeIn();
+                options.onShow.call(this);
                 return false;
             });
         }
