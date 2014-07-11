@@ -9,11 +9,11 @@
             width : "500",
             content: "Example of how to create a modal box.",
             top: "20%",
+            topOffset : true,
             left: "30%",
-            leftOffset: 0, 
-            noClick: false, /*it will just initialite the modal without wait for a click*/
-            onShow: function() {}
-
+            leftOffset: 0,
+            visibility: 'hidden',
+            noClick: false /*it will just initialite the modal without wait for a click*/
         },prop);
 
 
@@ -21,17 +21,14 @@
             add_block_page();
             add_popup_box();
             set_styles();
-            $('.modal_box').fadeIn();
-            options.onShow.call(this);
+            //$('.modal_box').fadeIn();
             return false;
         } else {
             return this.click(function(e){
                 add_block_page();
                 add_popup_box();
-                set_styles();
-    
-                $('.modal_box').fadeIn();
-                options.onShow.call(this);
+                set_styles();    
+                //$('.modal_box').fadeIn();
                 return false;
             });
         }
@@ -43,13 +40,16 @@
                 options.leftOffset = '-' + (options.width/2) + 'px';
             }
 
-            if(options.top.indexOf("%")) {
-                options.top = options.top.replace("%","");
-                options.topOffset = $(window).scrollTop() + ($( window ).height() * (options.top/100));
-
+            if(options.topOffset == true){
+                if(options.top.indexOf("%")) {
+                    options.top = options.top.replace("%","");
+                    options.topOffset = $(window).scrollTop() + ($( window ).height() * (options.top/100));
+                } else {
+                    //I will assume that we got a simple value without the px suffix on it
+                    options.topOffset = window.scrollY + options.top;
+                }
             } else {
-                //I will assume that we got a simple value without the px suffix on it
-                options.topOffset = window.scrollY + options.top;
+                options.topOffset = options.top;
             }
 
             $('.modal_box').css({
@@ -58,7 +58,8 @@
                 'top': options.topOffset + 'px',
                 'height': 'auto',
                 'max-height' : (window.innerHeight - 100) + 'px',
-                'width': options.width + 'px'
+                'width': options.width + 'px',
+                'visibility': 'visible'
             });
 
             /*Block page overlay*/
@@ -69,7 +70,6 @@
                 'height':pageHeight,
                 'width':pageWidth
             });
-
         }
 
         function add_block_page(){
@@ -83,8 +83,10 @@
             $(pop_up).appendTo('.block_page');
 
             $('.modal_close').click(function(){
-                $(this).parent().fadeOut().remove();
-                $('.block_page').fadeOut().remove();
+                $(this).parent().css({"visibility":"hidden"}).remove();
+                $('.block_page').css({"visibility":"hidden"}).remove();
+                //$(this).parent().fadeOut().remove();
+                //$('.block_page').fadeOut().remove();
                 return false;
             });
         }
