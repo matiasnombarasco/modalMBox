@@ -12,7 +12,8 @@
             topOffset : true,
             left: "30%",
             leftOffset: 0,
-            noClick: false /*it will just initialite the modal without wait for a click*/
+            noClick: false /*it will just initialite the modal without wait for a click*/,
+            onShow: function() {}
         },prop);
 
 
@@ -20,14 +21,14 @@
             add_block_page();
             add_popup_box();
             set_styles();
-            //$('.modal_box').fadeIn();
+            options.onShow.call(this);
             return false;
         } else {
             return this.click(function(e){
                 add_block_page();
                 add_popup_box();
                 set_styles();    
-                //$('.modal_box').fadeIn();
+                options.onShow.call(this);
                 return false;
             });
         }
