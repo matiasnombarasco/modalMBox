@@ -12,7 +12,6 @@
             topOffset : true,
             left: "30%",
             leftOffset: 0,
-            visibility: 'hidden',
             noClick: false /*it will just initialite the modal without wait for a click*/
         },prop);
 
@@ -64,7 +63,8 @@
 
             /*Block page overlay*/
             var pageHeight = $(document).height();
-            var pageWidth = $(window).width();
+            //var pageWidth = $(window).width();
+            var pageWidth = "100%";
 
             $('.block_page').css({
                 'height':pageHeight,
