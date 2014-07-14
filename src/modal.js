@@ -16,7 +16,6 @@
             onShow: function() {}
         },prop);
 
-
         if(options.noClick) {
             add_block_page();
             add_popup_box();
@@ -40,22 +39,13 @@
                 options.leftOffset = '-' + (options.width/2) + 'px';
             }
 
-            if(options.topOffset == true){
-                if(options.top.indexOf("%")) {
-                    options.top = options.top.replace("%","");
-                    options.topOffset = $(window).scrollTop() + ($( window ).height() * (options.top/100));
-                } else {
-                    //I will assume that we got a simple value without the px suffix on it
-                    options.topOffset = window.scrollY + options.top;
-                }
-            } else {
+          
                 options.topOffset = options.top;
-            }
-
+        
             $('.modal_box').css({
                 'left': '50%',
                 'margin-left': options.leftOffset,
-                'top': options.topOffset + 'px',
+                'top': options.topOffset,
                 'height': 'auto',
                 'max-height' : (window.innerHeight - 100) + 'px',
                 'width': options.width + 'px',
