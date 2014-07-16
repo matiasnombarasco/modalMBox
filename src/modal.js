@@ -8,7 +8,7 @@
             height : "250",
             width : "500",
             content: "Example of how to create a modal box.",
-            top: "20%",
+            top: "10%",
             topOffset : true,
             left: "30%",
             leftOffset: 0,
