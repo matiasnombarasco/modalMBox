@@ -12,7 +12,7 @@
             topOffset : true,
             left: "30%",
             leftOffset: 0,
-            noClick: false /*it will just initialite the modal without wait for a click*/,
+            noClick: false,
             onShow: function() {}
         },prop);
 
