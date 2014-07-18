@@ -8,14 +8,28 @@
             height : "250",
             width : "500",
             content: "Example of how to create a modal box.",
-            top: "10%",
+            top: "20%",
             topOffset : true,
             left: "30%",
             leftOffset: 0,
-            noClick: false,
+            noClick: false /*it will just initialite the modal without wait for a click*/,
             onShow: function() {}
         },prop);
-
+        
+        this.ShowBackground = function(opts){
+            add_block_page();
+            
+            if(typeof opts!='undefined'){
+                $('.block_page').css(opts);
+            }else{
+                $('.block_page').css({
+                    'height':$(document).height(),
+                    'width':"100%"
+                });
+            }
+        };
+        
+        
         if(options.noClick) {
             add_block_page();
             add_popup_box();
@@ -23,6 +37,7 @@
             options.onShow.call(this);
             return false;
         } else {
+            
             return this.click(function(e){
                 add_block_page();
                 add_popup_box();
@@ -39,8 +54,11 @@
                 options.leftOffset = '-' + (options.width/2) + 'px';
             }
 
-          
-                options.topOffset = options.top;
+            $('body').addClass('overflow');
+            $('body').css({height:$(window).height()});
+                //options.topOffset = options.top;
+                options.topOffset = $(window).scrollTop();
+                options.topOffset += ($(window).height()-$('.modal_box').height())/2;
         
             $('.modal_box').css({
                 'left': '50%',
@@ -61,6 +79,15 @@
                 'height':pageHeight,
                 'width':pageWidth
             });
+            
+            $(document).scroll(function(e){
+                if(!$(e).hasClass('.chat-content'))
+                e.stopPropagation();
+                e.preventDefault();
+            });
+            
+            
+            
         }
 
         function add_block_page(){
@@ -68,7 +95,7 @@
 
             $(block_page).appendTo('body');
         }
-
+        
         function add_popup_box(){
             var pop_up = $('<div class="modal_box"><a href="#" class="modal_close"></a><div class="inner_modal_box">' + options.content + '</div></div>');
             $(pop_up).appendTo('.block_page');
@@ -78,6 +105,10 @@
                 $('.block_page').css({"visibility":"hidden"}).remove();
                 //$(this).parent().fadeOut().remove();
                 //$('.block_page').fadeOut().remove();
+                $('body').removeClass('overflow');
+                $('body').css({height:'auto'});
+                
+                
                 return false;
             });
         }
