@@ -8,7 +8,7 @@
             height : "250",
             width : "500",
             content: "Example of how to create a modal box.",
-            top: "20%",
+            top: "",
             topOffset : true,
             left: "30%",
             leftOffset: 0,
@@ -57,8 +57,13 @@
             $('body').addClass('overflow');
             $('body').css({height:$(window).height()});
                 //options.topOffset = options.top;
+            if(options.top != "") {
+                options.topOffset = options.top;
+            } else {
                 options.topOffset = $(window).scrollTop();
                 options.topOffset += ($(window).height()-$('.modal_box').height())/2;
+            }
+
         
             $('.modal_box').css({
                 'left': '50%',
@@ -80,12 +85,12 @@
                 'width':pageWidth
             });
             
-            $(document).scroll(function(e){
+          /*  $(document).scroll(function(e){
                 if(!$(e).hasClass('.chat-content'))
                 e.stopPropagation();
                 e.preventDefault();
             });
-            
+            */
             
             
         }
