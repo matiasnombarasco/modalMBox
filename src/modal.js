@@ -70,7 +70,7 @@
                 'margin-left': options.leftOffset,
                 'top': options.topOffset,
                 'height': 'auto',
-                'max-height' : (window.innerHeight - 100) + 'px',
+              /* 'max-height' : (window.innerHeight - 100) + 'px',*/
                 'width': options.width + 'px',
                 'visibility': 'visible'
             });
