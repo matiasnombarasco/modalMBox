@@ -1,8 +1,8 @@
 {
-  "name": "modalmbox",
-  "description": "Simple and lightweight modal window plugi",
+  "name": "Modal Matt Box",
+  "description": "Simple and lightweight modal window plugin",
   "main": "dist/modalmbox.js",
-  "version": "0.2.8",
-  "dependencies": {}
+  "version": "0.3",
+  "dependencies": { "jquery": "~2.0.3" }
 }
 
