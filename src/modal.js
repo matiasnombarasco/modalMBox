@@ -3,7 +3,6 @@
     $.fn.modal_box = function(prop){
 
         // Default parameters - Im not proud for this, I promess that i will refator when i had a chance
-
         var options = $.extend({
             height : "250",
             width : "500",
@@ -37,7 +36,6 @@
             options.onShow.call(this);
             return false;
         } else {
-            
             return this.click(function(e){
                 add_block_page();
                 add_popup_box();
@@ -56,7 +54,7 @@
 
             $('body').addClass('overflow');
             $('body').css({height:$(window).height()});
-                //options.topOffset = options.top;
+
             if(options.top != "") {
                 options.topOffset = options.top;
             } else {
@@ -70,28 +68,18 @@
                 'margin-left': options.leftOffset,
                 'top': options.topOffset,
                 'height': 'auto',
-              /* 'max-height' : (window.innerHeight - 100) + 'px',*/
                 'width': options.width + 'px',
                 'visibility': 'visible'
             });
 
             /*Block page overlay*/
             var pageHeight = $(document).height();
-            //var pageWidth = $(window).width();
             var pageWidth = "100%";
 
             $('.block_page').css({
                 'height':pageHeight,
                 'width':pageWidth
             });
-            
-          /*  $(document).scroll(function(e){
-                if(!$(e).hasClass('.chat-content'))
-                e.stopPropagation();
-                e.preventDefault();
-            });
-            */
-            
             
         }
 
@@ -108,8 +96,7 @@
             $('.modal_close').click(function(){
                 $(this).parent().css({"visibility":"hidden"}).remove();
                 $('.block_page').css({"visibility":"hidden"}).remove();
-                //$(this).parent().fadeOut().remove();
-                //$('.block_page').fadeOut().remove();
+
                 $('body').removeClass('overflow');
                 $('body').css({height:'auto'});
                 
